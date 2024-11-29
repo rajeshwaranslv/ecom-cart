@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOGO Offer</title>
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fffafc;
+      color: #333;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #e8e8e8;
+      border-radius: 10px;
+      background-color: #fff;
+    }
+
+    .title-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .title-container::before,
+    .title-container::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background-color: #ccc;
+    }
+
+    .title-container::before {
+      margin-right: 10px;
+    }
+
+    .title-container::after {
+      margin-left: 10px;
+    }
+
+    h1 {
+      color: #ff6b88;
+      font-size: 1.25rem;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .form-check {
+      border: 1px solid #f3f3f3;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+      position: relative;
+    }
+
+    .form-check .discount {
+      background-color: #ff6b88;
+      color: #fff;
+      font-size: 0.75rem;
+      padding: 2px 5px;
+      border-radius: 4px;
+      margin-left: 5px;
+    }
+
+    .form-check .price {
+      font-weight: bold;
+      color: #333;
+    }
+
+    .form-check .original-price {
+      text-decoration: line-through;
+      color: #999;
+      font-size: 0.9em;
+    }
+
+    .most-popular {
+      background-color: #fff1f4;
+      border-color: #ff6b88;
+      border:3px solid #ff6b88;
+    }
+
+    .most-popular::before {
+      content: 'MOST POPULAR';
+      position: absolute;
+      top: -10px;
+      right: 10px;
+      background-color: #ff6b88;
+      color: #fff;
+      font-size: 0.7em;
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+    .d-block{
+      display: block !important;
+      position: relative;
+      left: 8rem;
+    }
+
+    .selectors {
+      margin-top: 10px;
+      display: none; /* Hide selectors by default */
+    }
+
+    .selectors .form-select {
+      margin-top: 5px;
+      font-size: 0.875rem; /* Make dropdown text smaller */
+    }
+
+    .selectors label {
+      font-size: 0.875rem; /* Make label text smaller */
+    }
+
+    .total {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 0;
+      font-weight: bold;
+    }
+
+    .delivery{
+      color:#ff6b88 ;
+      font-weight: bold;
+    }
+
+    .btn-add-to-cart {
+      background-color: #ff6b88;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .btn-add-to-cart:hover {
+      background-color: #e05570;
+      color: White;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 0.8em;
+      color: #aaa;
+    }
+
+    #total-price{
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+
+    .total{
+      font-size: 15px;
+    }
+
+    /* Pink Radio Button Customization */
+    .form-check-input:checked {
+      background-color: #ff6b88;
+      border-color: #ff6b88;
+    }
+
+    .form-check-input:checked:focus {
+      box-shadow: 0 0 0 0.25rem rgba(255, 107, 136, 0.5);
+    }
+
+    .form-check-input {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 50%;
+      height: 20px;
+      width: 20px;
+      transition: all 0.2s;
+    }
+
+    .form-check-input:checked {
+      background-color: #ff6b88;
+      border-color: #ff6b88;
+    }
+
+    .form-check-input:checked + .form-check-label {
+      color: #ff6b88;
+    }
+
+    .form-check-input:checked:focus {
+      box-shadow: 0 0 0 0.25rem rgba(255, 107, 136, 0.5);
+    }
+    .heading{
+      font-weight: bolder;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Title Centered Between Lines -->
+    <div class="title-container">
+      <h1 class="heading">YAY! It's BOGO</h1>
+    </div>
+    <form>
+      <!-- 1 Unit Option -->
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="bogo"
+          id="one-unit"
+          value="1"
+          checked
+        >
+        <label class="form-check-label" for="one-unit">
+          <div class="d-flex justify-content-between">
+            <div>1 Unit <span class="discount">10% Off</span></div>
+            <div class="ms-auto text-end">
+              <span class="price d-block">$10.00 USD</span>
+              <span class="original-price d-block">$24.00 USD</span>
+            </div>
+          </div>
+        </label>
+
+        <!-- Size and Color Selectors -->
+        <div class="selectors" id="selectors-1">
+          <div class="row mt-2">
+            <div class="col-6">
+              <label for="size1" class="form-label">Size #1</label>
+              <select id="size1" class="form-select form-select-sm">
+                <option value="S">Small</option>
+                <option value="M">Medium</option>
+                <option value="L">Large</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <label for="color1" class="form-label">Color #1</label>
+              <select id="color1" class="form-select form-select-sm">
+                <option value="Black">Black</option>
+                <option value="White">White</option>
+                <option value="Blue">Blue</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 Units Option with Size and Color -->
+      <div class="form-check most-popular">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="bogo"
+          id="two-units"
+          value="2"
+        >
+        <label class="form-check-label" for="two-units">
+          <div class="d-flex justify-content-between">
+            <div>2 Units <span class="discount">20% Off</span></div>
+            <div class="ms-auto text-end">
+              <span class="price d-block">$18.00 USD</span>
+              <span class="original-price d-block">$24.00 USD</span>
+            </div>
+          </div>
+        </label>
+
+        <!-- Size and Color Selectors -->
+        <div class="selectors" id="selectors-2">
+          <div class="row mt-2">
+            <div class="col-6">
+              <label for="size2" class="form-label">Size #2</label>
+              <select id="size2" class="form-select form-select-sm">
+                <option value="S">Small</option>
+                <option value="M">Medium</option>
+                <option value="L">Large</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <label for="color2" class="form-label">Color #2</label>
+              <select id="color2" class="form-select form-select-sm">
+                <option value="Black">Black</option>
+                <option value="White">White</option>
+                <option value="Blue">Blue</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 Units Option with Size and Color -->
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="bogo"
+          id="three-units"
+          value="3"
+        >
+        <label class="form-check-label" for="three-units">
+          <div class="d-flex justify-content-between">
+            <div>3 Units <span class="discount">30% Off</span></div>
+            <div class="ms-auto text-end">
+              <span class="price d-block">$24.00 USD</span>
+              <span class="original-price d-block">$24.00 USD</span>
+            </div>
+          </div>
+        </label>
+
+        <!-- Size and Color Selectors -->
+        <div class="selectors" id="selectors-3">
+          <div class="row mt-2">
+            <div class="col-6">
+              <label for="size3" class="form-label">Size #3</label>
+              <select id="size3" class="form-select form-select-sm">
+                <option value="S">Small</option>
+                <option value="M">Medium</option>
+                <option value="L">Large</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <label for="color3" class="form-label">Color #3</label>
+              <select id="color3" class="form-select form-select-sm">
+                <option value="Black">Black</option>
+                <option value="White">White</option>
+                <option value="Blue">Blue</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Total Section -->
+      <div class="total">
+        <span class="delivery">Free Delivery</span>
+        <span id="total-price">Total: <span id="total-price">$18.00 USD</span></span>
+      </div>
+
+      <!-- Add to Cart Button -->
+      <button type="button" class="btn btn-add-to-cart">+ Add to Cart</button>
+    </form>
+    <footer>Powered by Pumper</footer>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+  ></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const radioButtons = document.querySelectorAll("input[name='bogo']");
+      const totalPrice = document.getElementById("total-price");
+
+      radioButtons.forEach((radio) => {
+        radio.addEventListener("change", () => {
+          // Hide all selectors
+          document.querySelectorAll('.selectors').forEach(selector => {
+            selector.style.display = 'none';
+          });
+
+          // Show selected option's selectors
+          const selectedId = `selectors-${radio.value}`;
+          document.getElementById(selectedId).style.display = 'block';
+
+          // Update total price based on the selected option
+          switch (radio.value) {
+            case "1":
+              totalPrice.textContent = "$10.00 USD";
+              break;
+            case "2":
+              totalPrice.textContent = "$18.00 USD";
+              break;
+            case "3":
+              totalPrice.textContent = "$24.00 USD";
+              break;
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
